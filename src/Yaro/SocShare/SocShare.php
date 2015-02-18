@@ -2,10 +2,6 @@
 
 namespace Yaro\SocShare;
 
-//use Illuminate\Support\Facades\Config;
-//use Illuminate\Support\Facades\Response;
-//use Illuminate\Support\Facades\DB;
-
 
 class SocShare
 {
@@ -16,6 +12,34 @@ class SocShare
 
         return $entity;
     } // end twitter
+    
+    public function pinterest($params = array())
+    {
+        $entity = new Providers\Pinterest($params);
+
+        return $entity;
+    } // end pinterest
+    
+    public function facebook($params = array())
+    {
+        $entity = new Providers\Facebook($params);
+
+        return $entity;
+    } // end facebook
+    
+    public function gplus($params = array())
+    {
+        $entity = new Providers\GooglePlus($params);
+
+        return $entity;
+    } // end gplus
+        
+    public function vk($params = array())
+    {
+        $entity = new Providers\Vkontakte($params);
+
+        return $entity;
+    } // end vk
 
 }
 

@@ -2,43 +2,43 @@
 
 namespace Yaro\SocShare\Providers;
 
-use Illuminate\Support\Facades\Config;
+use Yaro\SocShare\Providers\AbstractProvider;
 use Illuminate\Support\Facades\Request;
 
 
-class Twitter
+class Twitter extends AbstractProvider
 {
 
-    public function __construct($params)
-    {
-        
-    } // end __construct
+    protected $provider = 'twitter';
+
 
     public function getUrl()
     {
-        $currentUrl = Config::get('soc-share::twitter.url') ? : Request::url();
-        $text = Config::get('soc-share::twitter.text') ? : Request::url();
-        
+        $currentUrl = $this->getOption('url', Request::url());
         
         $url = 'https://twitter.com/share?'
-             . 'url=' . urlencode($currentUrl) .'&'
-             . 'text=' . urlencode($text);
+             . 'url=' . urlencode($currentUrl);
              
-        $related = Config::get('soc-share::twitter.related', array());
+        $text = $this->getOption('text');
+        if ($text) {
+            $url .= '&text=' . urlencode($text);
+        }    
+           
+        $related = $this->getOption('related');
         if ($related) {
             $related = implode(',', $related);
-            $url = '&related=' . urlencode($related);
+            $url .= '&related=' . urlencode($related);
         }   
          
-        $hashtags = Config::get('soc-share::twitter.hashtags', array());
+        $hashtags = $this->getOption('hashtags');
         if ($hashtags) {
             $hashtags = implode(',', $hashtags);
-            $url = '&hashtags=' . urlencode($hashtags);
+            $url .= '&hashtags=' . urlencode($hashtags);
         }
         
-        $via = Config::get('soc-share::twitter.via');
+        $via = $this->getOption('via');
         if ($via) {
-            $url = '&via=' . urlencode($via);
+            $url .= '&via=' . urlencode($via);
         }
         
         return $url;
