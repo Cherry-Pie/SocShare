@@ -23,7 +23,7 @@ return array(
         'type' => 'share', // dialog|share
     
         'href'         => '', // leave empty to get current
-        'app_id'       => '',
+        'app_id'       => '', // required if dialog type setted
         'redirect_uri' => '',
         'display'      => 'popup',
         'from'         => '',
