@@ -1,10 +1,10 @@
 {
     "name": "yaro/soc-share",
-    "description": "",
+    "description": "Social network share link builder"
     "authors": [
         {
-            "name": "OlesKashchenko",
-            "email": "oleskashchenko@gmail.com"
+            "name": "Yaro",
+            "email": "12fcv4@gmail.com"
         }
     ],
     "require": {
