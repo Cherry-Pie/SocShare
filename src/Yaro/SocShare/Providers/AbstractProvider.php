@@ -35,6 +35,12 @@ abstract class AbstractProvider
         return $option;
     } // end getRequiredOption
     
+    public function getJs()
+    {
+        return "SocShare.show('". $this->getUrl() ."', ". $this->windowHeight .", ". $this->windowWidth .");";
+    } // end getJs
+    
+    abstract public function getUrl();
     
 }
 

@@ -10,6 +10,9 @@ class Facebook extends AbstractProvider
 {
 
     protected $provider = 'facebook';
+    
+    protected $windowWidth  = 580;
+    protected $windowHeight = 325;
 
     
     public function getUrl()
@@ -23,7 +26,6 @@ class Facebook extends AbstractProvider
              . 'display=' . $this->getOption('display', 'popup') .'&'
              . 'href=' . urlencode($this->getOption('href', Request::url())) .'&'
              . 'redirect_uri=' . urlencode($this->getOption('redirect_uri', Request::url()));
-             
              
         $from = $this->getOption('from');
         if ($from) {

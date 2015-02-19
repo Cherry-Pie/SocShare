@@ -10,6 +10,9 @@ class Pinterest extends AbstractProvider
 {
 
     protected $provider = 'pinterest';
+    
+    protected $windowWidth  = 700;
+    protected $windowHeight = 300;
 
     
     public function getUrl()

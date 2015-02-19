@@ -10,6 +10,9 @@ class Twitter extends AbstractProvider
 {
 
     protected $provider = 'twitter';
+    
+    protected $windowWidth  = 550;
+    protected $windowHeight = 300;
 
 
     public function getUrl()

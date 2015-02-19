@@ -10,6 +10,9 @@ class Vkontakte extends AbstractProvider
 {
 
     protected $provider = 'vk';
+    
+    protected $windowWidth  = 590;
+    protected $windowHeight = 415;
 
     
     public function getUrl()

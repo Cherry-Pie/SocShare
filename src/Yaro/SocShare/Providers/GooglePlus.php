@@ -10,6 +10,9 @@ class GooglePlus extends AbstractProvider
 {
 
     protected $provider = 'gplus';
+    
+    protected $windowWidth  = 490;
+    protected $windowHeight = 600;
 
     
     public function getUrl()

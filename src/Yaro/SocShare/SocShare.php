@@ -6,6 +6,11 @@ namespace Yaro\SocShare;
 class SocShare
 {
 
+    public function renderJs()
+    {
+        return '<script type="text/javascript" src="'. asset('/packages/yaro/soc-share/soc-share.js') .'"></script>';
+    } // end renderJs
+    
     public function twitter($params = array())
     {
         $entity = new Providers\Twitter($params);
