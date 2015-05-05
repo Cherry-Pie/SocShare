@@ -4,6 +4,7 @@ namespace Yaro\SocShare\Providers;
 
 use Yaro\SocShare\Providers\AbstractProvider;
 use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\URL;
 
 
 class Facebook extends AbstractProvider
@@ -25,7 +26,7 @@ class Facebook extends AbstractProvider
              . 'app_id=' . $this->getRequiredOption('app_id') .'&'
              . 'display=' . $this->getOption('display', 'popup') .'&'
              . 'href=' . urlencode($this->getOption('href', Request::url())) .'&'
-             . 'redirect_uri=' . urlencode($this->getOption('redirect_uri', Request::url()));
+             . 'redirect_uri=' . urlencode($this->getOption('redirect_uri', URL::to('_soc-share/close/window')));
              
         $from = $this->getOption('from');
         if ($from) {
