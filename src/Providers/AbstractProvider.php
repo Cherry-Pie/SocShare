@@ -17,7 +17,7 @@ abstract class AbstractProvider
 
     public function __construct($params)
     {
-        $this->options = array_merge(Config::get('soc-share::'. $this->provider), $params);
+        $this->options = array_merge(config('yaro.soc-share.'. $this->provider), $params);
     } // end __construct
 
     public function getOption($ident, $default = false)
@@ -41,6 +41,8 @@ abstract class AbstractProvider
     } // end getJs
     
     abstract public function getUrl();
+    
+    abstract public function getCount();
     
 }
 

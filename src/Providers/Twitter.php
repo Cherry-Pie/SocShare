@@ -47,5 +47,16 @@ class Twitter extends AbstractProvider
         return $url;
     } // end getUrl
     
+    public function getCount()
+    {
+        $url = 'https://cdn.api.twitter.com/1/urls/count.json?url=' 
+             . urlencode($this->getOption('url', Request::url()));
+             
+        $result = file_get_contents($url);
+        $result = json_decode($result, true);
+
+        return isset($result['count']) ? $result['count'] : 0;
+    } // end getCount
+    
 }
 

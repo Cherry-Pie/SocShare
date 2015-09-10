@@ -1,20 +1,23 @@
 {
     "name": "yaro/soc-share",
     "description": "Social network share link builder",
+    "keywords": ["laravel", "share", "social"],
     "authors": [
         {
             "name": "Yaro",
-            "email": "12fcv4@gmail.com"
+            "email": "12fcv4@gmail.com",
+            "homepage": "http://cherry-pie.co"
         }
     ],
     "require": {
         "php": ">=5.4.0",
-        "illuminate/support": "4.2.*"
+        "illuminate/support": "5.*"
     },
     "autoload": {
-        "psr-0": {
-            "Yaro\\SocShare": "src/"
+        "psr-4": {
+            "Yaro\\SocShare\\": "src/"
         }
     },
+    "license": "MIT",
     "minimum-stability": "stable"
 }

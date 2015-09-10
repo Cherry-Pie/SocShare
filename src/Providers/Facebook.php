@@ -79,7 +79,6 @@ class Facebook extends AbstractProvider
             $url .= '&ref=' . urlencode(implode(',', $ref));
         } 
         
-        
         return $url;
     } // end getUrl
     
@@ -87,6 +86,16 @@ class Facebook extends AbstractProvider
     {
         return 'https://www.facebook.com/share.php?u=' . urlencode($this->getOption('href', Request::url()));
     } // end getSimpleShareUrl
+    
+    public function getCount()
+    {
+        $url = 'http://graph.facebook.com/?id=' . urlencode($this->getOption('href', Request::url()));
+             
+        $result = file_get_contents($url);
+        $result = json_decode($result, true);
+
+        return isset($result['shares']) ? $result['shares'] : 0;
+    } // end getCount
     
 }
 

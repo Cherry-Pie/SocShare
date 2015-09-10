@@ -1,11 +1,9 @@
 <?php
 
-namespace Yaro\SocShare\Facades;
-
-use Illuminate\Support\Facades\Facade;
+namespace Yaro\SocShare;
 
 
-class SocShare extends Facade
+class Facade extends \Illuminate\Support\Facades\Facade
 {
 
     /**
