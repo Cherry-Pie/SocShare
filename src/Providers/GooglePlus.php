@@ -30,14 +30,22 @@ class GooglePlus extends AbstractProvider
     
     public function getCount()
     {
+        $count = $this->getCache();
+        if ($count) {
+            return $count;
+        }
+        
         $url = 'https://plusone.google.com/_/+1/fastbutton?url='
              . urlencode($this->getOption('url', Request::url())) 
              .'&count=true';
              
-        $result = file_get_contents($url);
+        $result = file_get_contents($url, false, $this->context);
         preg_match('~aggregateCount[^>]+>(\d+)</div>~', $result, $matches);
         
-        return isset($matches[1]) ? $matches[1] : 0;
+        $count = isset($matches[1]) ? $matches[1] : 0;
+        $this->setCache($count);
+        
+        return $count;
     } // end getCount
     
 }

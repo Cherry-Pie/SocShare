@@ -33,14 +33,22 @@ class Pinterest extends AbstractProvider
     
     public function getCount()
     {
+        $count = $this->getCache();
+        if ($count) {
+            return $count;
+        }
+        
         $url = 'http://api.pinterest.com/v1/urls/count.json?callback=_&url=' 
              . urlencode($this->getOption('url', Request::url()));
              
-        $result = file_get_contents($url);
+        $result = file_get_contents($url, false, $this->context);
         $result = trim($result, ')_(');
         $result = json_decode($result, true);
 
-        return isset($result['count']) ? $result['count'] : 0;
+        $count = isset($result['count']) ? $result['count'] : 0;
+        $this->setCache($count);
+        
+        return $count;
     } // end getCount
     
 }

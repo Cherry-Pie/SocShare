@@ -43,13 +43,21 @@ class Vkontakte extends AbstractProvider
         
     public function getCount()
     {
+        $count = $this->getCache();
+        if ($count) {
+            return $count;
+        }
+        
         $url = 'https://vk.com/share.php?act=count&index=1&url=' 
              . urlencode($this->getOption('url', Request::url()));
              
-        $result = file_get_contents($url);
+        $result = file_get_contents($url, false, $this->context);
         preg_match('~VK\.Share\.count\(\d+,\s*(\d+)\);~', $result, $matches);
 
-        return isset($matches[1]) ? $matches[1] : 0;
+        $count = isset($matches[1]) ? $matches[1] : 0;
+        $this->setCache($count);
+        
+        return $count;
     } // end getCount
     
 }

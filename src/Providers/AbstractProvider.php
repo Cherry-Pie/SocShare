@@ -4,28 +4,34 @@ namespace Yaro\SocShare\Providers;
 
 use Yaro\SocShare\Providers\AbstractProvider;
 use Yaro\SocShare\Exceptions\SocShareRequiredInputException;
-use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\Cache;
 
 
 abstract class AbstractProvider
 {
 
     protected $provider;
-    protected $options = array();    
+    protected $options = array();
+    protected $context;
 
 
     public function __construct($params)
     {
         $this->options = array_merge(config('yaro.soc-share.'. $this->provider), $params);
+        $this->context = stream_context_create(array( 
+            'http' => array( 
+                'timeout' => config('yaro.soc-share.http_timeout')
+            ) 
+        ));
     } // end __construct
 
-    public function getOption($ident, $default = false)
+    protected function getOption($ident, $default = false)
     {
         return $this->options[$ident] ? : $default;
     } // end getOption
     
-    public function getRequiredOption($ident, $default = false)
+    protected function getRequiredOption($ident, $default = false)
     {
         $option = $this->getOption($ident, $default);
         if (!$option) {
@@ -34,6 +40,30 @@ abstract class AbstractProvider
         
         return $option;
     } // end getRequiredOption
+    
+    protected function getCache()
+    {
+        $minutes = config('yaro.soc-share.cache_minutes');
+        if (!$minutes) {
+            return false;
+        }
+        
+        $key = $this->provider .'.'. md5(serilize($this->options));
+        
+        return Cache::tags('soc-share')->get($key);
+    } // end getCache
+    
+    protected function setCache($shareCount)
+    {
+        $minutes = config('yaro.soc-share.cache_minutes');
+        if (!$minutes) {
+            return false;
+        }
+        
+        $key = $this->provider .'.'. md5(serilize($this->options));
+        
+        return Cache::tags('soc-share')->put($key, $shareCount, $minutes);
+    } // end setCache
     
     public function getJs()
     {

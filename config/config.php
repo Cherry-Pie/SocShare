@@ -2,6 +2,12 @@
 
 return array(
 
+    // timeout in seconds for http request to retrieve share count
+    'http_timeout' => 2,
+    
+    // to cache share count, leave 0 to disable caching
+    'cache_minutes' => 60,
+
     // https://dev.twitter.com/web/tweet-button/parameters
     'twitter' => array(
         'url'      => '', // leave empty to get current

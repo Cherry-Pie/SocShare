@@ -49,13 +49,21 @@ class Twitter extends AbstractProvider
     
     public function getCount()
     {
+        $count = $this->getCache();
+        if ($count) {
+            return $count;
+        }
+        
         $url = 'https://cdn.api.twitter.com/1/urls/count.json?url=' 
              . urlencode($this->getOption('url', Request::url()));
              
-        $result = file_get_contents($url);
+        $result = file_get_contents($url, false, $this->context);
         $result = json_decode($result, true);
 
-        return isset($result['count']) ? $result['count'] : 0;
+        $count = isset($result['count']) ? $result['count'] : 0;
+        $this->setCache($count);
+        
+        return $count;
     } // end getCount
     
 }

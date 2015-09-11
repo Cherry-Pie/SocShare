@@ -89,12 +89,20 @@ class Facebook extends AbstractProvider
     
     public function getCount()
     {
+        $count = $this->getCache();
+        if ($count) {
+            return $count;
+        }
+        
         $url = 'http://graph.facebook.com/?id=' . urlencode($this->getOption('href', Request::url()));
              
-        $result = file_get_contents($url);
+        $result = file_get_contents($url, false, $this->context);
         $result = json_decode($result, true);
 
-        return isset($result['shares']) ? $result['shares'] : 0;
+        $count = isset($result['shares']) ? $result['shares'] : 0;
+        $this->setCache($count);
+        
+        return $count;
     } // end getCount
     
 }
