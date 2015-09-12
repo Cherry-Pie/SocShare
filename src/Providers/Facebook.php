@@ -90,7 +90,7 @@ class Facebook extends AbstractProvider
     public function getCount()
     {
         $count = $this->getCache();
-        if ($count) {
+        if (!is_null($count)) {
             return $count;
         }
         

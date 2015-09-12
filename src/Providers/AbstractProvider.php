@@ -45,7 +45,7 @@ abstract class AbstractProvider
     {
         $minutes = config('yaro.soc-share.cache_minutes');
         if (!$minutes) {
-            return false;
+            return null;
         }
         
         $key = $this->provider .'.'. md5(serilize($this->options));
@@ -57,7 +57,7 @@ abstract class AbstractProvider
     {
         $minutes = config('yaro.soc-share.cache_minutes');
         if (!$minutes) {
-            return false;
+            return null;
         }
         
         $key = $this->provider .'.'. md5(serilize($this->options));
