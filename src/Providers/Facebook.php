@@ -25,7 +25,7 @@ class Facebook extends AbstractProvider
         $url = 'https://www.facebook.com/dialog/share?'
              . 'app_id=' . $this->getRequiredOption('app_id') .'&'
              . 'display=' . $this->getOption('display', 'popup') .'&'
-             . 'href=' . urlencode($this->getOption('href', Request::url())) .'&'
+             . 'href=' . urlencode($this->getOption('url', Request::url())) .'&'
              . 'redirect_uri=' . urlencode($this->getOption('redirect_uri', URL::to('_soc-share/close/window')));
              
         $from = $this->getOption('from');
@@ -75,7 +75,6 @@ class Facebook extends AbstractProvider
         
         $ref = $this->getOption('ref');
         if ($ref) {
-            // FIXME: validate ref
             $url .= '&ref=' . urlencode(implode(',', $ref));
         } 
         
@@ -84,7 +83,7 @@ class Facebook extends AbstractProvider
     
     public function getSimpleShareUrl()
     {
-        return 'https://www.facebook.com/share.php?u=' . urlencode($this->getOption('href', Request::url()));
+        return 'https://www.facebook.com/share.php?u=' . urlencode($this->getOption('url', Request::url()));
     } // end getSimpleShareUrl
     
     public function getCount()
@@ -94,7 +93,7 @@ class Facebook extends AbstractProvider
             return $count;
         }
         
-        $url = 'http://graph.facebook.com/?id=' . urlencode($this->getOption('href', Request::url()));
+        $url = 'http://graph.facebook.com/?id=' . urlencode($this->getOption('url', Request::url()));
              
         $result = file_get_contents($url, false, $this->context);
         $result = json_decode($result, true);

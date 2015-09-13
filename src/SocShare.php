@@ -45,6 +45,13 @@ class SocShare
 
         return $entity;
     } // end vk
+    
+    public function tumblr($params = array())
+    {
+        $entity = new Providers\Tumblr($params);
+
+        return $entity;
+    } // end tumblr
 
 }
 

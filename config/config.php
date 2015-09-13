@@ -28,7 +28,7 @@ return array(
     'facebook' => array(
         'type' => 'share', // dialog|share
     
-        'href'         => '', // leave empty to get current
+        'url'         => '', // leave empty to get current
         'app_id'       => '', // required if dialog type setted
         'redirect_uri' => '',
         'display'      => 'popup',
@@ -57,6 +57,14 @@ return array(
         'description' => '',
         'image'       => '',
         'noparse'     => false, // true|false
+    ),
+    
+    // https://www.tumblr.com/docs/ru/share_button
+    'tumblr' => array(
+        'url'     => '', // leave empty to get current
+        'title'   => '',
+        'caption' => '',
+        'tags'    => array(), // ['tag', 'newtag', 'onemoretag']
     ),
 
 );

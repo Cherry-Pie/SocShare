@@ -48,7 +48,7 @@ abstract class AbstractProvider
             return null;
         }
         
-        $key = $this->provider .'.'. md5(serilize($this->options));
+        $key = $this->provider .'.'. md5(serialize($this->options)); 
         
         return Cache::tags('soc-share')->get($key);
     } // end getCache
@@ -60,7 +60,7 @@ abstract class AbstractProvider
             return null;
         }
         
-        $key = $this->provider .'.'. md5(serilize($this->options));
+        $key = $this->provider .'.'. md5(serialize($this->options));
         
         return Cache::tags('soc-share')->put($key, $shareCount, $minutes);
     } // end setCache

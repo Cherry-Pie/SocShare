@@ -10,7 +10,7 @@ Add dependency to composer.json:
 }
 ```
 
-Add to app/config/app.php:
+Add to config/app.php:
 ```php
 'providers' => array(
 //...
@@ -31,7 +31,7 @@ $ php artisan vendor:publish --provider="Yaro\SocShare\ServiceProvider"
 
 
 ### Usage
-Currently supported networks:  google+, facebook, twitter, vkontakte, pinterest.<br/>
+Currently supported networks:  google+, facebook, twitter, vkontakte, pinterest, tumblr.<br/>
 Ex:
 ```html
 <a href="{{ SocShare::gplus()->getUrl() }}" target="_blank">Google+ ({{ SocShare::gplus()->getCount() }})</a>
