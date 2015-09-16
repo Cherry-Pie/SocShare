@@ -41,7 +41,7 @@ class Pinterest extends AbstractProvider
         $url = 'http://api.pinterest.com/v1/urls/count.json?callback=_&url=' 
              . urlencode($this->getOption('url', Request::url()));
              
-        $result = file_get_contents($url, false, $this->context);
+        $result = $this->fileGetContents($url);
         $result = trim($result, ')_(');
         $result = json_decode($result, true);
 

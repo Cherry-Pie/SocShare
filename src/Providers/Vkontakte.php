@@ -51,7 +51,7 @@ class Vkontakte extends AbstractProvider
         $url = 'https://vk.com/share.php?act=count&index=1&url=' 
              . urlencode($this->getOption('url', Request::url()));
              
-        $result = file_get_contents($url, false, $this->context);
+        $result = $this->fileGetContents($url);
         preg_match('~VK\.Share\.count\(\d+,\s*(\d+)\);~', $result, $matches);
 
         $count = isset($matches[1]) ? $matches[1] : 0;

@@ -6,6 +6,7 @@ use Yaro\SocShare\Providers\AbstractProvider;
 use Yaro\SocShare\Exceptions\SocShareRequiredInputException;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Cache;
+use ErrorException;
 
 
 abstract class AbstractProvider
@@ -64,6 +65,13 @@ abstract class AbstractProvider
         
         return Cache::tags('soc-share')->put($key, $shareCount, $minutes);
     } // end setCache
+    
+    protected function fileGetContents($url)
+    {
+        try {
+            return file_get_contents($url, false, $this->context);
+        } catch (ErrorException $e) {}
+    } // end fileGetContents
     
     public function getJs()
     {

@@ -33,7 +33,7 @@ class Odnoklassniki extends AbstractProvider
         $url = 'https://connect.ok.ru/dk?st.cmd=extLike&uid=hai&ref='
              . urlencode($this->getOption('url', Request::url()));
         
-        $result = file_get_contents($url, false, $this->context);
+        $result = $this->fileGetContents($url);
         preg_match("~^ODKL\.updateCount\('hai','(\d+)'\);~", $result, $matches);
         
         $count = isset($matches[1]) ? $matches[1] : 0;

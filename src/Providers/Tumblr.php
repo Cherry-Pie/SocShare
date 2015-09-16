@@ -40,7 +40,7 @@ class Tumblr extends AbstractProvider
         $url = 'https://api.tumblr.com/v2/share/stats?url='
              . urlencode($this->getOption('url', Request::url()));
         
-        $result = file_get_contents($url, false, $this->context);
+        $result = $this->fileGetContents($url);
         
         $count = isset($matches['response']['note_count']) ? $matches['response']['note_count'] : 0;
         $this->setCache($count);

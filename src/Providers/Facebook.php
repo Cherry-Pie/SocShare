@@ -95,7 +95,7 @@ class Facebook extends AbstractProvider
         
         $url = 'http://graph.facebook.com/?id=' . urlencode($this->getOption('url', Request::url()));
              
-        $result = file_get_contents($url, false, $this->context);
+        $result = $this->fileGetContents($url);
         $result = json_decode($result, true);
 
         $count = isset($result['shares']) ? $result['shares'] : 0;

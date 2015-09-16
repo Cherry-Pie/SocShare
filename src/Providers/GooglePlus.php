@@ -39,7 +39,7 @@ class GooglePlus extends AbstractProvider
              . urlencode($this->getOption('url', Request::url())) 
              .'&count=true';
              
-        $result = file_get_contents($url, false, $this->context);
+        $result = $this->fileGetContents($url);
         preg_match('~aggregateCount[^>]+>(\d+)</div>~', $result, $matches);
         
         $count = isset($matches[1]) ? $matches[1] : 0;

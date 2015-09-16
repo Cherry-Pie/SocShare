@@ -57,7 +57,7 @@ class Twitter extends AbstractProvider
         $url = 'https://cdn.api.twitter.com/1/urls/count.json?url=' 
              . urlencode($this->getOption('url', Request::url()));
              
-        $result = file_get_contents($url, false, $this->context);
+        $result = $this->fileGetContents($url);
         $result = json_decode($result, true);
 
         $count = isset($result['count']) ? $result['count'] : 0;
