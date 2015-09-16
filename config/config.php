@@ -66,6 +66,11 @@ return array(
         'caption' => '',
         'tags'    => array(), // ['tag', 'newtag', 'onemoretag']
     ),
+    
+    // https://apiok.ru
+    'ok' => array(
+        'url' => '', // leave empty to get current
+    ),
 
 );
 

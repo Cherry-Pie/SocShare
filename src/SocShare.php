@@ -52,6 +52,13 @@ class SocShare
 
         return $entity;
     } // end tumblr
+    
+    public function ok($params = array())
+    {
+        $entity = new Providers\Odnoklassniki($params);
+
+        return $entity;
+    } // end ok
 
 }
 
