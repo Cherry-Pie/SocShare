@@ -72,5 +72,13 @@ return array(
         'url' => '', // leave empty to get current
     ),
 
+    // https://developer.linkedin.com/docs/share-on-linkedin
+    'linkedin' => array(
+        'url'     => '', // leave empty to get current
+        'title'   => '', 
+        'summary' => '',
+        'source'  => '',
+    ),
+	
 );
 
