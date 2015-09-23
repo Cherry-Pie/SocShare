@@ -60,5 +60,12 @@ class SocShare
         return $entity;
     } // end ok
 
+    public function linkedin($params = array())
+    {
+        $entity = new Providers\Linkedin($params);
+
+        return $entity;
+    } // end linkedin
+
 }
 
