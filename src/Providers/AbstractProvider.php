@@ -49,9 +49,9 @@ abstract class AbstractProvider
             return null;
         }
         
-        $key = $this->provider .'.'. md5(serialize($this->options)); 
+        $key = 'soc-share.' . $this->provider .'.'. md5(serialize($this->options)); 
         
-        return Cache::tags('soc-share')->get($key);
+        return Cache::get($key);
     } // end getCache
     
     protected function setCache($shareCount)
@@ -61,9 +61,9 @@ abstract class AbstractProvider
             return null;
         }
         
-        $key = $this->provider .'.'. md5(serialize($this->options));
+        $key = 'soc-share.' . $this->provider .'.'. md5(serialize($this->options));
         
-        return Cache::tags('soc-share')->put($key, $shareCount, $minutes);
+        return Cache::put($key, $shareCount, $minutes);
     } // end setCache
     
     protected function fileGetContents($url)

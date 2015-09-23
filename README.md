@@ -24,14 +24,14 @@ Add to config/app.php:
 ),
 ```
 
-Then run commands:
+Then run command:
 ```shell
 $ php artisan vendor:publish --provider="Yaro\SocShare\ServiceProvider"
 ```
 
 
 ### Usage
-Currently supported networks:  google+, facebook, twitter, vkontakte, pinterest, tumblr, odnoklassniki.<br/>
+Currently supported networks:  google+, facebook, twitter, vkontakte, pinterest, tumblr, odnoklassniki, linkedin.<br/>
 Ex:
 ```html
 <a href="{{ SocShare::gplus()->getUrl() }}" target="_blank">Google+ ({{ SocShare::gplus()->getCount() }})</a>
