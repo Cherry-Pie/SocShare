@@ -98,7 +98,7 @@ class Facebook extends AbstractProvider
         $result = $this->fileGetContents($url);
         $result = json_decode($result, true);
 
-        $count = isset($result['shares']) ? $result['shares'] : 0;
+        $count = isset($result['share']['share_count']) ? $result['share']['share_count'] : 0;
         $this->setCache($count);
         
         return $count;
