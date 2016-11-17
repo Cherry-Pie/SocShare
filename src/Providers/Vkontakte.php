@@ -17,7 +17,7 @@ class Vkontakte extends AbstractProvider
     
     public function getUrl()
     {
-        $url = 'http://vk.com/share.php?'
+        $url = 'https://vk.com/share.php?'
              . 'url=' . urlencode($this->getOption('url', Request::url()));
         
         $title = $this->getOption('title');
