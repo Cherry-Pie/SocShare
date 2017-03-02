@@ -36,7 +36,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
     {
         $this->mergeConfigFrom(__DIR__ . '/../config/config.php', 'yaro.soc-share.php');
 
-        $this->app['yaro_soc_share'] = $this->app->share(function($app) {
+        $this->app->singleton('yaro_soc_share', function ($app) {
             return new SocShare();
         });
     } // end register
