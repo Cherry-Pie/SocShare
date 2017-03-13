@@ -18,7 +18,7 @@ class Tumblr extends AbstractProvider
     public function getUrl()
     {
         $url = 'https://www.tumblr.com/widgets/share/tool?canonicalUrl='
-             . urlencode($this->getOption('url', Request::url()))
+             . urlencode($this->getOption('url'))
              . '&title=' . urlencode($this->getOption('title'))
              . '&caption=' . urlencode($this->getOption('caption'));
           
@@ -38,7 +38,7 @@ class Tumblr extends AbstractProvider
         }
         
         $url = 'https://api.tumblr.com/v2/share/stats?url='
-             . urlencode($this->getOption('url', Request::url()));
+             . urlencode($this->getOption('url'));
         
         $result = $this->fileGetContents($url);
         

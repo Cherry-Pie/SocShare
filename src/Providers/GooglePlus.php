@@ -18,7 +18,7 @@ class GooglePlus extends AbstractProvider
     public function getUrl()
     {
         $url = 'https://plus.google.com/share?'
-             . 'url=' . urlencode($this->getOption('url', Request::url()));
+             . 'url=' . urlencode($this->getOption('url'));
              
         $language = $this->getOption('hl');
         if ($language) {
@@ -36,7 +36,7 @@ class GooglePlus extends AbstractProvider
         }
         
         $url = 'https://plusone.google.com/_/+1/fastbutton?url='
-             . urlencode($this->getOption('url', Request::url())) 
+             . urlencode($this->getOption('url'))
              .'&count=true';
              
         $result = $this->fileGetContents($url);

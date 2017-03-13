@@ -18,7 +18,7 @@ class Vkontakte extends AbstractProvider
     public function getUrl()
     {
         $url = 'https://vk.com/share.php?'
-             . 'url=' . urlencode($this->getOption('url', Request::url()));
+             . 'url=' . urlencode($this->getOption('url'));
         
         $title = $this->getOption('title');
         if ($title) {
@@ -49,7 +49,7 @@ class Vkontakte extends AbstractProvider
         }
         
         $url = 'https://vk.com/share.php?act=count&index=1&url=' 
-             . urlencode($this->getOption('url', Request::url()));
+             . urlencode($this->getOption('url'));
              
         $result = $this->fileGetContents($url);
         preg_match('~VK\.Share\.count\(\d+,\s*(\d+)\);~', $result, $matches);

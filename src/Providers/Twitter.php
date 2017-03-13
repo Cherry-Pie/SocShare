@@ -17,7 +17,7 @@ class Twitter extends AbstractProvider
 
     public function getUrl()
     {
-        $currentUrl = $this->getOption('url', Request::url());
+        $currentUrl = $this->getOption('url');
         
         $url = 'https://twitter.com/share?'
              . 'url=' . urlencode($currentUrl);
@@ -55,7 +55,7 @@ class Twitter extends AbstractProvider
         }
         
         $url = 'https://cdn.api.twitter.com/1/urls/count.json?url=' 
-             . urlencode($this->getOption('url', Request::url()));
+             . urlencode($this->getOption('url'));
              
         $result = $this->fileGetContents($url);
         $result = json_decode($result, true);
