@@ -18,7 +18,7 @@ class Linkedin extends AbstractProvider
     public function getUrl()
     {
         $url = 'https://www.linkedin.com/shareArticle?mini=true'
-             . '&url=' . urlencode($this->getOption('url', Request::url()))
+             . '&url=' . urlencode($this->getOption('url'))
              . '&title=' . urlencode($this->getOption('title'))
              . '&summary=' . urlencode($this->getOption('summary'))
              . '&source=' . urlencode($this->getOption('source'));
@@ -34,7 +34,7 @@ class Linkedin extends AbstractProvider
         }
         
         $url = 'http://www.linkedin.com/countserv/count/share?format=json&url='
-             . urlencode($this->getOption('url', Request::url()));
+             . urlencode($this->getOption('url'));
         
         $result = $this->fileGetContents($url);
         $result = json_decode($result, true);

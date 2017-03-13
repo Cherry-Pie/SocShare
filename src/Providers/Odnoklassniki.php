@@ -18,7 +18,7 @@ class Odnoklassniki extends AbstractProvider
     public function getUrl()
     {
         $url = 'https://connect.ok.ru/dk?st.cmd=WidgetSharePreview&st.shareUrl='
-             . urlencode($this->getOption('url', Request::url()));
+             . urlencode($this->getOption('url'));
              
         return $url;
     } // end getUrl
@@ -31,7 +31,7 @@ class Odnoklassniki extends AbstractProvider
         }
         
         $url = 'https://connect.ok.ru/dk?st.cmd=extLike&uid=hai&ref='
-             . urlencode($this->getOption('url', Request::url()));
+             . urlencode($this->getOption('url'));
         
         $result = $this->fileGetContents($url);
         preg_match("~^ODKL\.updateCount\('hai','(\d+)'\);~", $result, $matches);

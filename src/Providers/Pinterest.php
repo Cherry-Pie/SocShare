@@ -17,7 +17,7 @@ class Pinterest extends AbstractProvider
     
     public function getUrl()
     {
-        $currentUrl = $this->getOption('url', Request::url());
+        $currentUrl = $this->getOption('url');
         $description = $this->getOption('description', Request::url());
         
         
@@ -39,7 +39,7 @@ class Pinterest extends AbstractProvider
         }
         
         $url = 'http://api.pinterest.com/v1/urls/count.json?callback=_&url=' 
-             . urlencode($this->getOption('url', Request::url()));
+             . urlencode($this->getOption('url'));
              
         $result = $this->fileGetContents($url);
         $result = trim($result, ')_(');

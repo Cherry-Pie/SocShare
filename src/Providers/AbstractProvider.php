@@ -25,6 +25,8 @@ abstract class AbstractProvider
                 'timeout' => config('yaro.soc-share.http_timeout')
             ) 
         ));
+
+        $this->options['url'] = $this->options['url'] ? : Request::url();
     } // end __construct
 
     protected function getOption($ident, $default = false)
